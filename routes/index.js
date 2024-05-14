@@ -23,7 +23,7 @@ function send_block_data(res, block, txs, title_text, orphan) {
   );
 }
 
-function send_tx_data(res, tx, blockcount, orphan) {
+function send_tx_data(res, tx, blockcount, orphan, datatx = null) {
   res.render(
     'tx',
     {
@@ -36,7 +36,8 @@ function send_tx_data(res, tx, blockcount, orphan) {
       customHash: get_custom_hash(),
       styleHash: get_style_hash(),
       themeHash: get_theme_hash(),
-      page_title_prefix: settings.coin.name + ' ' + 'Transaction ' + tx.txid
+      page_title_prefix: settings.coin.name + ' ' + 'Transaction ' + tx.txid,
+      datatx: datatx
     }
   );
 }
@@ -179,10 +180,12 @@ function route_get_tx(res, txid) {
         lib.get_blockcount(function(blockcount) {
           if (settings.claim_address_page.enabled == true) {
             db.populate_claim_address_names(tx, function(tx) {
-              send_tx_data(res, tx, (blockcount ? blockcount : 0), null);
+              lib.get_datatx(txid, function(datatx){
+                send_tx_data(res, tx, (blockcount ? blockcount : 0), null, datatx);  
+              })
             });
           } else
-            send_tx_data(res, tx, (blockcount ? blockcount : 0), null);
+            send_tx_data(res, tx, (blockcount ? blockcount : 0), null, null);
         });
       } else {
         lib.get_rawtransaction(txid, function(rtx) {
@@ -205,10 +208,12 @@ function route_get_tx(res, txid) {
 
                         if (settings.claim_address_page.enabled == true) {
                           db.populate_claim_address_names(utx, function(utx) {
-                            send_tx_data(res, utx, (block.height - 1), true);
+                            lib.get_datatx(txid, function(datatx){
+                              send_tx_data(res, utx, (block.height - 1), true, datatx);
+                            })
                           });
                         } else
-                          send_tx_data(res, utx, (block.height - 1), true);
+                          send_tx_data(res, utx, (block.height - 1), true, null);
                       } else {
                         // cannot load tx
                         route_get_txlist(res, null);
@@ -234,10 +239,12 @@ function route_get_tx(res, txid) {
                           lib.get_blockcount(function(blockcount) {
                             if (settings.claim_address_page.enabled == true) {
                               db.populate_claim_address_names(utx, function(utx) {
-                                send_tx_data(res, utx, (blockcount ? blockcount : 0), null);
+                                lib.get_datatx(txid, function(datatx){
+                                  send_tx_data(res, utx, (blockcount ? blockcount : 0), null, datatx);
+                                })
                               });
                             } else
-                              send_tx_data(res, utx, (blockcount ? blockcount : 0), null);
+                              send_tx_data(res, utx, (blockcount ? blockcount : 0), null, null);
                           });
                         } else {
                           // cannot load tx
@@ -259,10 +266,12 @@ function route_get_tx(res, txid) {
                       lib.get_blockcount(function(blockcount) {
                         if (settings.claim_address_page.enabled == true) {
                           db.populate_claim_address_names(utx, function(utx) {
-                            send_tx_data(res, utx, (blockcount ? blockcount : 0), null);
+                            lib.get_datatx(txid, function(datatx){
+                              send_tx_data(res, utx, (blockcount ? blockcount : 0), null, datatx);
+                            })
                           });
                         } else
-                          send_tx_data(res, utx, (blockcount ? blockcount : 0), null);
+                          send_tx_data(res, utx, (blockcount ? blockcount : 0), null, null);
                       });
                     }
                   }
