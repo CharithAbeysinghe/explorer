@@ -130,8 +130,14 @@ block content
                 td.text-center.d-table-cell.d-md-none
                   a(href='/tx/' + txn.txid)
                     span.fa-regular.fa-eye(data-bs-toggle='tooltip', data-bs-placement='top', title=settings.locale.view_tx)
+                  if txn.ntype == 7
+                    br
+                    label.badge.bg-info="DataTx"    
                 td.d-none.d-md-table-cell
-                  a.breakWord(href='/tx/' + txn.txid) #{txn.txid}
+                  div.tx-detailed
+                    a.breakWord(href='/tx/' + txn.txid) #{txn.txid}
+                    if txn.ntype == 7
+                      label.badge.bg-info="DataTx"
                 td.text-center #{txn.vout.length}
                 if txn.vout.length > 0
                   - var total = Number(txn.total / 100000000).toLocaleString('en',{'minimumFractionDigits':2,'maximumFractionDigits':8,'useGrouping':true});

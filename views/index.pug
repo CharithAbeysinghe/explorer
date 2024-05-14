@@ -62,6 +62,7 @@ block content
         },
         rowCallback: function(row, data, index) {
           // variables for better readability
+          console.log(data)
           var blockindex = data[0];
           var blockhash = data[1];
           var txhash = data[2];
@@ -70,11 +71,12 @@ block content
           var amountParts = amount.split('.');
           var amount = amountParts[0] + '.<span class="decimal">' + amountParts[1] + '</span>';
           var timestamp = data[5];
+          var ntype = (data[6] == 7)? '&nbsp;&nbsp;<label class="badge bg-info">DataTx</label>' : '';
           var offset = 0;
 
-          $("td:eq(0)", row).html('<a href="/tx/' + txhash + '"><span class="fa-regular fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="#{settings.locale.view_tx}"></span></a>').addClass('text-center d-table-cell d-md-none');
+          $("td:eq(0)", row).html('<a href="/tx/' + txhash + '"><span class="fa-regular fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="#{settings.locale.view_tx}"></span></a>'+ntype).addClass('text-center d-table-cell d-md-none');
           $("td:eq(1)", row).html('<a href="/block/' + blockhash + '">' + blockindex + '</a>');
-          $("td:eq(2)", row).html('<a href="/tx/' + txhash + '">' + txhash + '</a>').addClass("text-center breakWord d-none d-md-table-cell");
+          $("td:eq(2)", row).html('<a href="/tx/' + txhash + '">' + txhash + '</a>' + ntype).addClass("text-center breakWord d-none d-md-table-cell");
           $("td:eq(3)", row).html(outputs).addClass("text-center d-none d-sm-table-cell");
           $("td:eq(4)", row).html(amount);
 

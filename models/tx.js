@@ -10,8 +10,9 @@ var TxSchema = new Schema({
   blockhash: { type: String, index: true },
   blockindex: {type: Number, default: 0, index: true},
   tx_type: { type: String, default: null },
-  op_return: { type: String, default: null },
-  algo: { type: String, default: null }
+  op_return: { type: String, default: null },   //vin or vout
+  algo: { type: String, default: null },
+  ntype: { type: Number, default: null }  //Transaction Type
 }, {id: false});
 
 TxSchema.index({total: 1, total: -1, blockindex: 1, blockindex: -1});
