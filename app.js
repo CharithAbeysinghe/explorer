@@ -411,10 +411,10 @@ app.use('/ext/getbasicstats', function(req, res) {
     res.end('This method is disabled');
 });
 
-app.use('/ext/getlasttxs/:min', function(req, res) {
+app.use('/ext/getlasttxs/:min/:ntype', function(req, res) {
   // check if the getlasttxs api is enabled or else check the headers to see if it matches an internal ajax request from the explorer itself (TODO: come up with a more secure method of whitelisting ajax calls from the explorer)
   if ((settings.api_page.enabled == true && settings.api_page.public_apis.ext.getlasttxs.enabled == true) || (req.headers['x-requested-with'] != null && req.headers['x-requested-with'].toLowerCase() == 'xmlhttprequest' && req.headers.referer != null && req.headers.accept.indexOf('text/javascript') > -1 && req.headers.accept.indexOf('application/json') > -1)) {
-    var min = req.params.min, start, length, internal = false;
+    var min = req.params.min, start, length, internal = false, ntype = req.params.ntype;
     // split url suffix by forward slash and remove blank entries
     var split = req.url.split('/').filter(function(v) { return v; });
     // determine how many parameters were passed
@@ -450,7 +450,7 @@ app.use('/ext/getlasttxs/:min', function(req, res) {
     else
       min  = (min * 100000000);
 
-    db.get_last_txs(start, length, min, internal, function(data, count) {
+    db.get_last_txs(start, length, min, internal, ntype, function(data, count) {
       // check if this is an internal request
       if (internal) {
         // display data formatted for internal datatable
