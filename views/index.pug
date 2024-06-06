@@ -203,74 +203,71 @@ block content
           strong #{settings.locale.ex_error}
         div #{error}
   .col-md-12.cardSpacer
-    if settings.index_page.page_header.show_img == true || settings.index_page.page_header.show_title == true || settings.index_page.page_header.show_last_updated == true || settings.index_page.page_header.show_description == true
-      #page-header-container(style='align-items:' + (settings.index_page.page_header.show_img == true && settings.index_page.page_header.show_title == true && settings.index_page.page_header.show_last_updated == true && settings.index_page.page_header.show_description == true ? 'flex-start' : 'center'))
-        if settings.index_page.page_header.show_img == true
-          #header-img-container
-            img#header-img(src=(settings.shared_pages.page_header.page_title_image == null || settings.shared_pages.page_header.page_title_image.image_path == null || settings.shared_pages.page_header.page_title_image.image_path == '' ? '/img/page-title-img.png' : settings.shared_pages.page_header.page_title_image.image_path))
-        #page-title-container
-          if settings.index_page.page_header.show_title == true
-            h3#page-title #{settings.locale.ex_title.replace('{1}', settings.coin.name)}
-          if settings.index_page.page_header.show_last_updated == true
-            if settings.index_page.page_header.show_title != true && settings.index_page.page_header.show_description != true
-              #page-title-container
-                .sub-page-header
+    .container
+      if settings.index_page.page_header.show_img == true || settings.index_page.page_header.show_title == true || settings.index_page.page_header.show_last_updated == true || settings.index_page.page_header.show_description == true
+        #page-header-container(style='align-items:' + (settings.index_page.page_header.show_img == true && settings.index_page.page_header.show_title == true && settings.index_page.page_header.show_last_updated == true && settings.index_page.page_header.show_description == true ? 'flex-start' : 'center'))
+          if settings.index_page.page_header.show_img == true
+            #header-img-container
+              img#header-img(src=(settings.shared_pages.page_header.page_title_image == null || settings.shared_pages.page_header.page_title_image.image_path == null || settings.shared_pages.page_header.page_title_image.image_path == '' ? '/img/page-title-img.png' : settings.shared_pages.page_header.page_title_image.image_path))
+          #page-title-container
+            if settings.index_page.page_header.show_title == true
+              h3#page-title #{settings.locale.ex_title.replace('{1}', settings.coin.name)}
+            if settings.index_page.page_header.show_last_updated == true
+              if settings.index_page.page_header.show_title != true && settings.index_page.page_header.show_description != true
+                #page-title-container
+                  .sub-page-header
+                    span.fw-bold=settings.locale.last_updated + ':'
+                    span.text-muted#lastUpdatedDate
+              else
+                .sub-page-header(style='margin-bottom:' + (settings.index_page.page_header.show_description == true ? '5' : '0') + 'px')
                   span.fw-bold=settings.locale.last_updated + ':'
                   span.text-muted#lastUpdatedDate
-            else
-              .sub-page-header(style='margin-bottom:' + (settings.index_page.page_header.show_description == true ? '5' : '0') + 'px')
-                span.fw-bold=settings.locale.last_updated + ':'
-                span.text-muted#lastUpdatedDate
-          if settings.index_page.page_header.show_description == true
-            if settings.index_page.page_header.show_title != true && settings.index_page.page_header.show_last_updated != true
-              #page-title-container
+            if settings.index_page.page_header.show_description == true
+              if settings.index_page.page_header.show_title != true && settings.index_page.page_header.show_last_updated != true
+                #page-title-container
+                  .sub-page-header.text-muted=settings.locale.ex_description.replace('{1}', settings.coin.name)
+              else
                 .sub-page-header.text-muted=settings.locale.ex_description.replace('{1}', settings.coin.name)
-            else
-              .sub-page-header.text-muted=settings.locale.ex_description.replace('{1}', settings.coin.name)
-      .cardSpacer.clearfix
-    ul.nav.nav-tabs(role='tablist')
-        li.nav-item(role='presentation')
-          a.nav-link.active(href='#latesttrans', aria-controls='latesttrans', role='tab', data-bs-toggle='tab') #{settings.locale.ex_latest_transactions}
-        li.nav-item(role='presentation')
-          a.nav-link(href='#datatxtrans', aria-controls='datatxtrans', role='tab', data-bs-toggle='tab') #{settings.locale.ex_datatx_transactions}  
-  .tab-content
-    #latesttrans.container.tab-pane.active(style='margin-top:0;border-top:0;')  
-      .card.card-default.border-0.cardSpacer
-        .card-header
-          strong #{settings.locale.ex_latest_transactions}
-        table#recent-table.table.table-bordered.table-striped.table-paging.table-hover
-          - var theadClasses = [];
-          if settings.shared_pages.table_header_bgcolor != null && settings.shared_pages.table_header_bgcolor != ''
-            - theadClasses.push('table-' + settings.shared_pages.table_header_bgcolor);
-          thead
-            tr(class=theadClasses)
-              th.d-table-cell.d-md-none
-              th.text-center #{settings.locale.ex_block}
-              th.text-center.d-none.d-md-table-cell #{settings.locale.tx_hash}
-              th.text-center.d-none.d-sm-table-cell #{settings.locale.tx_recipients}
-              th.text-center #{settings.locale.mkt_amount}
-                span.small.fw-normal  (#{settings.coin.symbol})
-              if settings.block_page.multi_algorithm.show_algo == true
-                th.text-center="Algorithm"
-              th.text-center #{settings.locale.timestamp}
-          tbody.text-center
-    #datatxtrans.container.tab-pane(style='margin-top:0;border-top:0;')
-      .card.card-default.border-0.cardSpacer
-        .card-header
-          strong #{settings.locale.ex_datatx_transactions}
-        table#datatx-table.table.table-bordered.table-striped.table-paging.table-hover
-          - var theadClasses = [];
-          if settings.shared_pages.table_header_bgcolor != null && settings.shared_pages.table_header_bgcolor != ''
-            - theadClasses.push('table-' + settings.shared_pages.table_header_bgcolor);
-          thead
-            tr(class=theadClasses)
-              th.d-table-cell.d-md-none
-              th.text-center #{settings.locale.ex_block}
-              th.text-center.d-none.d-md-table-cell #{settings.locale.tx_hash}
-              th.text-center.d-none.d-sm-table-cell #{settings.locale.tx_recipients}
-              th.text-center #{settings.locale.mkt_amount}
-                span.small.fw-normal  (#{settings.coin.symbol})
-              if settings.block_page.multi_algorithm.show_algo == true
-                th.text-center="Algorithm"
-              th.text-center #{settings.locale.timestamp}
-          tbody.text-center  
+        .cardSpacer.clearfix
+      ul.nav.nav-tabs(role='tablist')
+          li.nav-item(role='presentation')
+            a.nav-link.active(href='#latesttrans', aria-controls='latesttrans', role='tab', data-bs-toggle='tab') #{settings.locale.ex_latest_transactions}
+          li.nav-item(role='presentation')
+            a.nav-link(href='#datatxtrans', aria-controls='datatxtrans', role='tab', data-bs-toggle='tab') #{settings.locale.ex_datatx_transactions}  
+    .tab-content
+      #latesttrans.container.tab-pane.active(style='margin-top:0;border-top:0;')  
+        .card.card-default.border-0
+          table#recent-table.table.table-bordered.table-striped.table-paging.table-hover
+            - var theadClasses = [];
+            if settings.shared_pages.table_header_bgcolor != null && settings.shared_pages.table_header_bgcolor != ''
+              - theadClasses.push('table-' + settings.shared_pages.table_header_bgcolor);
+            thead
+              tr(class=theadClasses)
+                th.d-table-cell.d-md-none
+                th.text-center #{settings.locale.ex_block}
+                th.text-center.d-none.d-md-table-cell #{settings.locale.tx_hash}
+                th.text-center.d-none.d-sm-table-cell #{settings.locale.tx_recipients}
+                th.text-center #{settings.locale.mkt_amount}
+                  span.small.fw-normal  (#{settings.coin.symbol})
+                if settings.block_page.multi_algorithm.show_algo == true
+                  th.text-center="Algorithm"
+                th.text-center #{settings.locale.timestamp}
+            tbody.text-center
+      #datatxtrans.container.tab-pane(style='margin-top:0;border-top:0;')
+        .card.card-default.border-0
+          table#datatx-table.table.table-bordered.table-striped.table-paging.table-hover
+            - var theadClasses = [];
+            if settings.shared_pages.table_header_bgcolor != null && settings.shared_pages.table_header_bgcolor != ''
+              - theadClasses.push('table-' + settings.shared_pages.table_header_bgcolor);
+            thead
+              tr(class=theadClasses)
+                th.d-table-cell.d-md-none
+                th.text-center #{settings.locale.ex_block}
+                th.text-center.d-none.d-md-table-cell #{settings.locale.tx_hash}
+                th.text-center.d-none.d-sm-table-cell #{settings.locale.tx_recipients}
+                th.text-center #{settings.locale.mkt_amount}
+                  span.small.fw-normal  (#{settings.coin.symbol})
+                if settings.block_page.multi_algorithm.show_algo == true
+                  th.text-center="Algorithm"
+                th.text-center #{settings.locale.timestamp}
+            tbody.text-center  

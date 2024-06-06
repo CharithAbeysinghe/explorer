@@ -1225,6 +1225,20 @@ html(lang='en')
               span#search-header-span(alt='Search', title='Search', data-bs-toggle='tooltip', data-bs-placement='left')
                 button#search-header-button(data-bs-toggle='collapse', data-bs-target='#search-navbar-collapse')
                   span.fa-solid.fa-magnifying-glass
+            // Add dropdown after search box
+            div.navbar-nav.ml-auto(style='margin-left: 5px;')
+              div.nav-item.dropdown
+                a#networkDropdown.nav-link.dropdown-toggle(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false', style='padding-left:5px;padding-right:5px;')
+                  strong
+                    if settings.coin.symbol == 'SPK'
+                      | Mainnet
+                    else 
+                      | Testnet 
+                ul.dropdown-menu(aria-labelledby='networkDropdown')
+                  li
+                    a.dropdown-item(href="https://mainnet.sparkspay.io/") Mainnet
+                  li
+                    a.dropdown-item(href="https://testnet.sparkspay.io/") Testnet         
         if settings.shared_pages.page_header.search.enabled == true && settings.shared_pages.page_header.search.position.toString().toLowerCase() == 'inside-header'
           div#search-navbar-collapse.collapse
             div.navbar-nav.align-items-lg-center.search-box-custom(style='width:100%;')
@@ -1249,13 +1263,27 @@ html(lang='en')
               span#search-header-span(alt='Search', title='Search', data-bs-toggle='tooltip', data-bs-placement='left')
                 button#search-header-button(data-bs-toggle='collapse', data-bs-target='#search-navbar-collapse')
                   span.fa-solid.fa-magnifying-glass
+            // Add dropdown after search box
+            div.navbar-nav.ml-auto(style='margin-left: 5px;')
+              div.nav-item.dropdown
+                a#networkDropdown.nav-link.dropdown-toggle(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false', style='padding-left:5px;padding-right:5px;')
+                  strong
+                    if settings.coin.symbol == 'SPK'
+                      | Mainnet
+                    else 
+                      | Testnet 
+                ul.dropdown-menu(aria-labelledby='networkDropdown')
+                  li
+                    a.dropdown-item(href="https://mainnet.sparkspay.io/") Mainnet
+                  li
+                    a.dropdown-item(href="https://testnet.sparkspay.io/") Testnet       
         if settings.shared_pages.page_header.search.enabled == true && settings.shared_pages.page_header.search.position.toString().toLowerCase() == 'inside-header'
           div#search-navbar-collapse.collapse.flexGrow1
             div.navbar-nav.align-items-lg-center.search-box-custom(style='width:100%;')
               form.form-inline.col-12.d-flex.justify-content-center(method='post', action='/search')
                 div.input-group.input-group-md.search-for(style='width:100%;')
                   input.form-control(type='text', name='search', placeholder=settings.locale.ex_search_message)
-                  button.btn.btn-success.btn-sm(type='submit') #{settings.locale.ex_search_button}
+                  button.btn.btn-success.btn-sm(type='submit') #{settings.locale.ex_search_button}     
     div#body-container(class=bodyContainerClasses)
       if settings.shared_pages.page_header.menu == 'side'
         div#side-nav-bar.navbar(class=sideBarClasses)
