@@ -211,13 +211,13 @@ block content
             if settings.api_page.public_apis.ext.getlasttxs.enabled == true
               li
                 p
-                  div.fw-bold getlasttxs (/ext/getlasttxs/min/start/length)
+                  div.fw-bold getlasttxs (/ext/getlasttxs/min/ntype/start/length)
                   div
                     em Returns last [length] transactions greater than [min] coins, starting from offset [start]
                   div
                     em Note: [length] is limited to returning #{settings.api_page.public_apis.ext.getlasttxs.max_items_per_query} records per query
                   div
-                    a(href='/ext/getlasttxs/100/0/100') #{address}/ext/getlasttxs/100/0/100
+                    a(href='/ext/getlasttxs/100/-1/0/100') #{address}/ext/getlasttxs/100/-1/0/100
             if settings.api_page.public_apis.ext.getcurrentprice.enabled == true
               li
                 p
