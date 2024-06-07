@@ -47,7 +47,7 @@ block content
         lengthMenu: lengthMenuOpts,
         scrollX: true,
         ajax: {
-          url: '/ext/getlasttxs/#{settings.movement_page.movement_table.min_amount}',
+          url: '/ext/getlasttxs/#{settings.movement_page.movement_table.min_amount}/-1',
           beforeSend: function(jqXHR, settings) {
             settings.url = settings.url.substring(0, settings.url.indexOf('?')) + '/' + getParameterByName('start', settings.url) + '/' + getParameterByName('length', settings.url) + '/internal';
             return true;
