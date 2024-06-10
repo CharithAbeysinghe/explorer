@@ -24,6 +24,18 @@ function send_block_data(res, block, txs, title_text, orphan) {
 }
 
 function send_tx_data(res, tx, blockcount, orphan, datatx = null) {
+  if(datatx){
+    let datatx_data = datatx.datatx.data;
+    datatx.datatx.itraceit_data = false;
+    try {
+      datatx_data = JSON.parse(datatx_data);
+      datatx.datatx.itraceit_data = true;
+    } catch (e) {
+      datatx_data = datatx.datatx.data;
+    }
+    datatx.datatx.data = datatx_data;
+  }
+  
   res.render(
     'tx',
     {
