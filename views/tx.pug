@@ -226,4 +226,13 @@ block content
             tr
               td.text-left.breakWord
                 =datatx.datatx.data.hash
-                
+    else if datatx && !datatx.datatx.itraceit_data
+      .card.card-default.border-0.cardSpacer
+        .card-header
+          strong=settings.locale.tx_content
+        table#tx-table.table.table-bordered.table-striped.summary-table.mobile-border-right
+          tbody
+            tr
+              td.text-left.breakWord
+                span.datatx-data
+                  =datatx.datatx.data          
