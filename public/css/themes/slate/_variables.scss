@@ -121,16 +121,16 @@ $pagination-disabled-border-color:  rgba($black, .6) !default;
 // Cards
 
 $card-border-color:                 rgba($black, .6) !default;
-$card-cap-bg:                       color.adjust($gray-800, $lightness: 10%, $space: hsl) !default;
-$card-bg:                           color.adjust($body-bg, $lightness: 5%, $space: hsl) !default;
+$card-cap-bg:                       color.adjust($gray-800, $lightness: 10%) !default;
+$card-bg:                           color.adjust($body-bg, $lightness: 5%) !default;
 
 // Popovers
 
-$popover-bg:                        color.adjust($body-bg, $lightness: 5%, $space: hsl) !default;
+$popover-bg:                        color.adjust($body-bg, $lightness: 5%) !default;
 
 // Toasts
 
-$toast-background-color:            color.adjust($body-bg, $lightness: 5%, $space: hsl) !default;
+$toast-background-color:            color.adjust($body-bg, $lightness: 5%) !default;
 $toast-border-color:                rgba(0, 0, 0, .2) !default;
 $toast-header-color:                $body-color !default;
 $toast-header-background-color:     $toast-background-color !default;
@@ -138,20 +138,20 @@ $toast-header-border-color:         $toast-border-color !default;
 
 // Modals
 
-$modal-content-bg:                  color.adjust($body-bg, $lightness: 5%, $space: hsl) !default;
+$modal-content-bg:                  color.adjust($body-bg, $lightness: 5%) !default;
 $modal-header-border-color:         rgba(0, 0, 0, .2) !default;
 
 // Progress bars
 
-$progress-bg:                       color.adjust($gray-900, $lightness: -5%, $space: hsl) !default;
+$progress-bg:                       color.adjust($gray-900, $lightness: -5%) !default;
 $progress-bar-color:                $gray-600 !default;
 
 // List group
 
 $list-group-color:                  $white !default;
-$list-group-bg:                     color.adjust($body-bg, $lightness: 5%, $space: hsl) !default;
+$list-group-bg:                     color.adjust($body-bg, $lightness: 5%) !default;
 $list-group-border-color:           rgba($black, .6) !default;
-$list-group-hover-bg:               color.adjust($body-bg, $lightness: 10%, $space: hsl) !default;
+$list-group-hover-bg:               color.adjust($body-bg, $lightness: 10%) !default;
 $list-group-active-color:           $white !default;
 $list-group-active-bg:              $list-group-hover-bg !default;
 $list-group-active-border-color:    $list-group-border-color !default;

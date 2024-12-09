@@ -85,7 +85,7 @@ $navbar-dark-hover-color:           $white !default;
 
 $pagination-color:                  $gray-600 !default;
 $pagination-border-color:           $nav-tabs-border-color !default;
-$pagination-active-border-color:    color.adjust($primary, $lightness: -5%, $space: hsl) !default;
+$pagination-active-border-color:    color.adjust($primary, $lightness: -5%) !default;
 $pagination-disabled-color:         $gray-200 !default;
 
 // Cards

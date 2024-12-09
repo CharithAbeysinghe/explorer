@@ -82,8 +82,8 @@ $table-bg-scale:              0 !default;
 
 // Forms
 
-$input-bg:                              color.adjust($body-bg, $lightness: 10%, $space: hsl) !default;
-$input-disabled-bg:                     color.adjust($body-bg, $lightness: 5%, $space: hsl) !default;
+$input-bg:                              color.adjust($body-bg, $lightness: 10%) !default;
+$input-disabled-bg:                     color.adjust($body-bg, $lightness: 5%) !default;
 
 $input-color:                           $white !default;
 

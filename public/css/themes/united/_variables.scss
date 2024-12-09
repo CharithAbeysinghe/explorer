@@ -55,4 +55,4 @@ $font-family-sans-serif:      Ubuntu, -apple-system, BlinkMacSystemFont, "Segoe 
 // Tables
 
 $table-dark-bg:               $dark !default;
-$table-dark-border-color:     color.adjust($dark, $lightness: -5%, $space: hsl) !default;
+$table-dark-border-color:     color.adjust($dark, $lightness: -5%) !default;
