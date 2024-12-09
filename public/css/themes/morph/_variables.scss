@@ -57,14 +57,14 @@ $link-color: color.adjust($body-color, $lightness: -20%, $space: hsl) !default;
 // Components
 
 $border-width:                0 !default;
-$border-color:                rgba(darken($body-bg, 50%), .1) !default;
+$border-color:                rgba(color.adjust($body-bg, $lightness: -50%, $space: hsl), .1) !default;
 
 $border-radius-pill:          50rem !default;
 
-$box-shadow:                  5px 5px 10px rgba(darken($body-bg, 50%), .2), -5px -5px 10px rgba($white, .4) !default;
-$box-shadow-sm:               0 .125rem .25rem rgba(darken($body-bg, 50%), .2) !default;
-$box-shadow-lg:               8px 8px 40px rgba(darken($body-bg, 90%), .15) !default;
-$box-shadow-inset:            inset 2px 2px 8px rgba(darken($body-bg, 50%), .3), inset -3px -2px 5px rgba($white, .8) !default;
+$box-shadow:                  5px 5px 10px rgba(color.adjust($body-bg, $lightness: -50%, $space: hsl), .2), -5px -5px 10px rgba($white, .4) !default;
+$box-shadow-sm:               0 .125rem .25rem rgba(color.adjust($body-bg, $lightness: -50%, $space: hsl), .2) !default;
+$box-shadow-lg:               8px 8px 40px rgba(color.adjust($body-bg, $lightness: -90%, $space: hsl), .15) !default;
+$box-shadow-inset:            inset 2px 2px 8px rgba(color.adjust($body-bg, $lightness: -50%, $space: hsl), .3), inset -3px -2px 5px rgba($white, .8) !default;
 
 // Fonts
 
@@ -107,7 +107,7 @@ $form-switch-focus-color:         $form-switch-color !default;
 $form-select-indicator-color:       $body-color !default;
 $form-select-box-shadow:          $box-shadow-inset !default;
 
-$form-range-track-bg:             rgba(darken($body-bg, 50%), .15) !default;
+$form-range-track-bg:             rgba(color.adjust($body-bg, $lightness: -50%, $space: hsl), .15) !default;
 $form-range-thumb-bg:                      $gray-100 !default;
 $form-range-thumb-active-bg:               $form-range-thumb-bg !default;
 $form-range-thumb-disabled-bg:             $gray-200 !default;
