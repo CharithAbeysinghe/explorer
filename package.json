@@ -30,26 +30,26 @@
     "update-explorer": "node ./scripts/update_explorer.js"
   },
   "dependencies": {
-    "async": "^3.2.4",
+    "async": "^3.2.5",
     "bad-words": "^3.0.4",
-    "body-parser": "^1.20.0",
+    "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "debug": ">=4.3.4",
-    "express": ">=4.18.1",
+    "express": ">=4.19.2",
     "intl": "^1.2.5",
     "jsonminify": "^0.4.2",
-    "mongodb": "^6.1.0",
-    "mongoose": "^8.0.3",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.2",
     "morgan": ">=1.10.0",
-    "postman-request": "^2.88.1-postman.31",
+    "postman-request": "^2.88.1-postman.33",
     "pug": "~3.0.2",
     "qr-image": "^3.2.0",
-    "sass": "^1.52.3",
+    "sass": "^1.75.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "forever": "^4.0.3",
-    "jasmine": ">=4.2.0",
-    "pm2": "^5.2.0"
+    "jasmine": ">=5.1.0",
+    "pm2": "^5.3.1"
   }
 }
