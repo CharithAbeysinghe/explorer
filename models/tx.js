@@ -15,6 +15,10 @@ var TxSchema = new Schema({
   ntype: { type: Number, default: null }  //Transaction Type
 }, {id: false});
 
-TxSchema.index({total: 1, total: -1, blockindex: 1, blockindex: -1});
+// Compound indexes for get_last_txs_ajax (and related queries): the previous
+// definition repeated keys (total/blockindex), so only one direction survived.
+TxSchema.index({ total: 1, blockindex: -1 });
+TxSchema.index({ ntype: 1, blockindex: -1 });
+TxSchema.index({ ntype: 1, total: 1 });
 
 module.exports = mongoose.model('Tx', TxSchema);
